@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#10231d"><title>Manajemen Bensin</title>
+<link rel="manifest" href="./manifest.json"><link rel="icon" href="./assets/icon.svg"><link rel="stylesheet" href="./src/styles.css">
+</head><body>
+<header><button id="menuBtn" class="icon">☰</button><div class="logo">⛽</div><div class="brand"><b>Manajemen Bensin</b><small id="subtitle">Stok & penjualan</small></div><span class="offline">● Offline</span></header>
+<div id="scrim"></div><nav id="drawer"><div class="drawerhead"><b>⛽ Manajemen Bensin</b><button id="closeBtn" class="icon">×</button></div><button data-page="home" class="nav active">▦ Home</button><button data-page="history" class="nav">◷ Riwayat</button><p class="muted">Data tersimpan lokal di perangkat ini.</p></nav>
+<main>
+<section id="home" class="page active">
+<div class="heading"><div><small class="eyebrow">OPERASIONAL HARIAN</small><h1>Home</h1><p class="muted">Atur stok dan catat penjualan.</p></div><span id="todayChip" class="chip"></span></div>
+<section class="panel">
+<div class="panelhead"><div><h2>＋ Input minyak</h2><p class="muted">Pilih nama, tanggal, dan stok awal.</p></div><button id="settingsBtn" class="ghost">⚙ Pengaturan</button></div>
+<form id="entryForm"><div class="formgrid"><label>Nama<select id="nameSelect" required></select></label><label>Tanggal<input id="dateInput" type="date" required></label></div>
+<div class="fuels"><label class="fuel"><span>● Minyak harga <b id="priceLabel0">15</b></span><input id="stock0" type="number" min="0" step="1" value="0" required></label><label class="fuel"><span>● Minyak harga <b id="priceLabel1">20</b></span><input id="stock1" type="number" min="0" step="1" value="0" required></label></div>
+<div class="formfoot"><small class="muted">Tanggal otomatis hari ini.</small><button class="primary">Terapkan →</button></div></form>
+</section>
+<div class="summary"><div><small>Stok tersisa</small><b id="sumRemain">0</b></div><div><small>Terjual hari ini</small><b id="sumSold">0</b></div><div><small>Uang penjualan</small><b id="sumMoney">0</b></div></div>
+<section class="panel tablepanel"><div class="panelhead tablehead"><div><h2>▦ Stok & penjualan</h2><p class="muted">Tekan − / + untuk mengubah jumlah.</p></div><div class="actions"><button id="lockBtn" class="secondary">🔓 Kunci stok</button><button id="saveBtn" class="primary">✓ Simpan hari</button></div></div>
+<div id="lockNotice" class="notice hidden">🔒 Stok terkunci. Penjualan masih dapat dicatat.</div>
+<div class="tablewrap" tabindex="0"><table><thead><tr><th>Tanggal</th><th>Nama</th><th>Stok</th><th>Penjualan</th><th>Sisa</th><th>Uang</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div id="empty" class="empty">▤<b>Belum ada data</b><small>Isi form lalu tekan Terapkan.</small></div><div class="tablefoot"><span id="rowCount">0 nama</span><span>Geser tabel ke samping →</span></div></section>
+<p class="bottomnote">Perubahan tersimpan otomatis. Tekan <b>Simpan hari</b> untuk membuat riwayat.</p>
+</section>
+<section id="history" class="page">
+<div class="heading"><div><small class="eyebrow">ARSIP TRANSAKSI</small><h1>Riwayat</h1><p class="muted">Rekaman yang sudah disimpan.</p></div><span class="chip">▣ Arsip</span></div>
+<div class="historybar"><input id="historySearch" type="search" placeholder="Cari tanggal atau nama…"><small id="historyCount" class="muted"></small></div>
+<div id="historyGrid" class="historygrid"></div><div id="historyEmpty" class="empty"><b>Belum ada riwayat</b><small>Simpan hari dari halaman Home.</small></div><section id="detail" class="panel hidden"></section>
+</section></main>
+<dialog id="settings"><form method="dialog"><div class="dialoghead"><h2>Pengaturan</h2><button class="icon" value="cancel">×</button></div><p class="muted">Kelola nama pilihan dan harga minyak.</p>
+<label>Nama baru<div class="inline"><input id="newName" placeholder="Contoh: Budi" maxlength="60"><button id="addName" type="button" class="secondary">Tambah</button></div></label><div id="nameList" class="namelist"></div>
+<div class="formgrid"><label>Harga minyak 1<input id="price0" type="number" min="0"></label><label>Harga minyak 2<input id="price1" type="number" min="0"></label></div>
+<div class="dialogactions"><button value="cancel" class="secondary">Batal</button><button id="saveSettings" type="button" class="primary">Simpan</button></div></form></dialog>
+<div id="toast" role="status"></div><script src="./src/app.js"></script></body></html>
