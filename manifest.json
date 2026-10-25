@@ -1,12 +1,12 @@
 {
   "id": "./",
-  "name": "Manajemen Bensin Offline",
-  "short_name": "Bensin",
+  "name": "Manajemen Stok Minyak Offline",
+  "short_name": "Stok Minyak",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f7f5",
-  "theme_color": "#10231d",
+  "theme_color": "#176b4a",
   "icons": [
     {
       "src": "./assets/icon.svg",
